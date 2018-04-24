@@ -1,0 +1,238 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven {
+            url "http://58.56.178.146:8081/nexus/content/repositories/com.romens.erp.core"
+            credentials {
+                username REPO_USERNAME
+                password REPO_PASSWORD
+            }
+        }
+        maven {
+            url "http://58.56.178.146:8081/nexus/content/repositories/com.romens.android"
+            credentials {
+                username REPO_USERNAME
+                password REPO_PASSWORD
+            }
+        }
+        maven {
+            url "http://58.56.178.146:8081/nexus/content/repositories/com.romens.extend.scanner"
+            credentials {
+                username REPO_USERNAME
+                password REPO_PASSWORD
+            }
+        }
+        maven {
+            url "http://58.56.178.146:8081/nexus/content/repositories/com.romens.extend.chart"
+            credentials {
+                username REPO_USERNAME
+                password REPO_PASSWORD
+            }
+        }
+        maven {
+            url "http://58.56.178.146:8081/nexus/content/repositories/com.romens.images"
+            credentials {
+                username REPO_USERNAME
+                password REPO_PASSWORD
+            }
+        }
+        maven {
+            url "http://58.56.178.146:8081/nexus/content/repositories/com.romens.push"
+            credentials {
+                username REPO_USERNAME
+                password REPO_PASSWORD
+            }
+        }
+        maven {
+            url "http://58.56.178.146:8081/nexus/content/repositories/com.romens.extend.map"
+            credentials {
+                username REPO_USERNAME
+                password REPO_PASSWORD
+            }
+        }
+        maven {
+            url "http://58.56.178.146:8081/nexus/content/repositories/com.romens.open"
+            credentials {
+                username REPO_USERNAME
+                password REPO_PASSWORD
+            }
+        }
+        maven {
+            url "http://58.56.178.146:8081/nexus/content/repositories/com.romens.extend"
+            credentials {
+                username REPO_USERNAME
+                password REPO_PASSWORD
+            }
+        }
+        maven {
+            url "http://58.56.178.146:8081/nexus/content/repositories/com.romens.rcp"
+            credentials {
+                username REPO_USERNAME
+                password REPO_PASSWORD
+            }
+        }
+        maven {
+            url "http://58.56.178.146:8081/nexus/content/repositories/com.romens.bug"
+            credentials {
+                username REPO_USERNAME
+                password REPO_PASSWORD
+            }
+        }
+        maven {
+            url "http://58.56.178.146:8081/nexus/content/repositories/com.romens.qcloud"
+            credentials {
+                username REPO_USERNAME
+                password REPO_PASSWORD
+            }
+        }
+        maven {
+            url "http://58.56.178.146:8081/nexus/content/repositories/com.romens.sdk.im"
+            credentials {
+                username REPO_USERNAME
+                password REPO_PASSWORD
+            }
+        }
+        maven {
+            url "http://58.56.178.146:8081/nexus/content/repositories/com.romens.open.multitype"
+            credentials {
+                username REPO_USERNAME
+                password REPO_PASSWORD
+            }
+        }
+
+        maven {
+            url "http://58.56.178.146:8081/nexus/content/repositories/com.romens.ble"
+            credentials {
+                username REPO_USERNAME
+                password REPO_PASSWORD
+            }
+        }
+        maven { url "https://raw.githubusercontent.com/Pgyer/mvn_repo_pgyer/master" }
+        maven { url "https://jitpack.io" }
+        google()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    compileSdkVersion = 25
+    targetSdkVersion = 22
+    buildToolsVersion = '25.0.1'
+
+    system_dependencies = [
+            //system
+            support_v4         : 'com.android.support:support-v4:25.+',
+            appcompat_v7       : 'com.android.support:appcompat-v7:25.+',
+            cardview_v7        : 'com.android.support:cardview-v7:25.+',
+            palette_v7         : 'com.android.support:palette-v7:25.+',
+            recyclerview_v7    : 'com.android.support:recyclerview-v7:25.+',
+            design             : 'com.android.support:design:25.+',
+            support_annotations: 'com.android.support:support-annotations:25.+'
+    ]
+//    romens_android_dependencies = [
+//            //romens android
+//            romens_android_aar  : 'romens:com.romens.android:3.8.8@aar',
+////            romens_android_aar  : project(':romens.android'),
+//            okhttp3             : 'com.squareup.okhttp3:okhttp:3.4.2',
+//            okio                : 'com.squareup.okio:okio:1.11.0',
+//            kryo                : 'com.esotericsoftware:kryo:3.0.3',
+//            jackson             : 'com.fasterxml.jackson.core:jackson-databind:2.7.1',
+//            rxandroid           : 'io.reactivex:rxandroid:1.2.0',
+//            rxjava              : 'io.reactivex:rxjava:1.1.5',
+//            rxbinding           : 'com.jakewharton.rxbinding:rxbinding:0.4.0',
+//            glide               : 'com.github.bumptech.glide:glide:3.6.0',
+//            gson                : 'com.google.code.gson:gson:2.2.4',
+//            guava               : 'com.google.guava:guava:16.0.1',
+//            greendao            : 'de.greenrobot:greendao:1.3.7',
+
+//            greenrobot_common   : 'de.greenrobot:java-common:2.0.0',
+//            calendarview        : 'com.prolificinteractive:material-calendarview:0.7.0',
+//            observablescrollview: 'com.github.ksoichiro:android-observablescrollview:1.5.0',
+//            nineoldandroids     : 'com.nineoldandroids:library:2.4.0+',
+//            materialedittext    : 'com.rengwuxian.materialedittext:library:2.1.4'
+//    ]
+    romens_android_dependencies = [
+            //romens android
+            romens_android_aar  : 'romens:com.romens.android:3.9.13@aar',
+//            romens_android_aar  : project(':romens.android'),
+            //okhttp3             : 'com.squareup.okhttp3:okhttp:3.4.2',
+            //okio                : 'com.squareup.okio:okio:1.11.0',
+            okhttp3             : 'com.squareup.okhttp3:okhttp:3.8.1',
+            okio                : 'com.squareup.okio:okio:1.13.0',
+            kryo                : 'com.esotericsoftware:kryo:3.0.3',
+            jackson             : 'com.fasterxml.jackson.core:jackson-databind:2.7.1',
+            //rxandroid           : 'io.reactivex:rxandroid:1.2.0',
+            //rxjava              : 'io.reactivex:rxjava:1.1.5',
+            rxandroid           : 'io.reactivex:rxandroid:1.2.1',
+            rxjava              : 'io.reactivex:rxjava:1.3.3',
+            rxandroid2          : 'io.reactivex.rxjava2:rxandroid:2.0.1',
+            rxjava2             : 'io.reactivex.rxjava2:rxjava:2.1.6',
+            //rxbinding           : 'com.jakewharton.rxbinding:rxbinding:0.4.0',
+            rxbinding           : 'com.jakewharton.rxbinding:rxbinding:1.0.1',
+            rxbinding2          : 'com.jakewharton.rxbinding2:rxbinding:2.0.0',
+            glide               : 'com.github.bumptech.glide:glide:3.6.0',
+            gson                : 'com.google.code.gson:gson:2.2.4',
+            guava               : 'com.google.guava:guava:16.0.1',
+            //greendao            : 'de.greenrobot:greendao:1.3.7',
+            greendao            : 'de.greenrobot:greendao:2.1.0',
+            greenrobot_common   : 'de.greenrobot:java-common:2.0.0',
+            calendarview        : 'com.prolificinteractive:material-calendarview:0.7.0',
+            observablescrollview: 'com.github.ksoichiro:android-observablescrollview:1.5.0',
+            nineoldandroids     : 'com.nineoldandroids:library:2.4.0+',
+            materialedittext    : 'com.rengwuxian.materialedittext:library:2.1.4'
+    ]
+
+    other_dependencies = [
+            //image
+            qcloud         : 'romens:com.romens.qcloud:1.3.2@aar',
+            romens_images  : 'romens:com.romens.images:1.9.0@aar',
+            fresco         : 'com.facebook.fresco:fresco:0.8.1+',
+            romens_scanner : 'romens:com.romens.extend.scanner:1.3.9@aar',
+            //romens_scanner_project: ':Romens.Extend.QR',
+            romens_push    : 'romens:com.romens.push:1.3.2@aar',
+            //romens_push_project: ':romens.push',
+            //romens_rcp    : 'romens:com.romens.rcp:1.2.2@aar',
+            romens_extend  : 'romens:com.romens.extend:1.6.0@aar',
+            romens_open   : 'romens:com.romens.open:1.0.0@aar',
+            //romens_open    : ':romens.opensource',
+            romens_chart   : 'romens:com.romens.extend.chart:2.1.1@aar',
+            //romens_bug            : 'romens:com.romens.bug:1.1.2@aar',
+            romens_map     : 'romens:com.romens.extend.map:1.0.0@aar',
+            romens_erp_core: 'romens:com.romens.erp.core:2.4.0@aar',
+            multitype      : 'romens:com.romens.open.multitype:1.3.2@aar',
+            ble            : 'romens:com.romens.ble:1.0.1@aar'
+    ]
+
+    git_dependencies = [
+            md_calendar: 'com.prolificinteractive:material-calendarview:1.4.3'
+    ]
+
+    private_dependencies = [
+            romens_android_project: ':romens.android',
+            qcloud_project        : ':qcloud',
+            chat_project          : ':chat'
+    ]
+
+}
+

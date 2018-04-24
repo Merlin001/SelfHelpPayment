@@ -1,0 +1,146 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+    defaultConfig {
+        applicationId "com.romens.selfpay.selfhelppayment"
+        minSdkVersion 16
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    signingConfigs {
+        debug {
+//            storeFile file("../keystore/debug/debug.keystore")
+//            storePassword "android"
+//            keyAlias "androiddebugkey"
+//            keyPassword "android"
+        }
+        release {
+            storeFile file("../keystore/release/ERPInventory.jks")
+            storePassword "Romens2ERP"
+            keyAlias "inventory"
+            keyPassword "Romens2Inventory"
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    buildTypes {
+        debug {
+            buildConfigField "boolean", "ENABLE_DEVELOP_MODE", "true"
+            shrinkResources false
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+        release {
+            buildConfigField "boolean", "ENABLE_DEVELOP_MODE", "false"
+            minifyEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "${variant.name}-v${variant.versionName}-c${variant.versionCode}.apk"
+                }
+            }
+
+//            applicationVariants.all { variant ->
+//                variant.outputs.each { output ->
+//                    def file = output.outputFile
+//                    if (file != null && file.name.endsWith('.apk')) {
+//                        //def fileName = file.name.replace(".apk", "-v" + versionName + "-c" + versionCode +"_t"+releaseTime()+".apk")
+//                        def fileName = file.name.replace(".apk", "_v${defaultConfig.versionName}_c${defaultConfig.versionCode}.apk")
+//                        output.outputFile = new File(file.parentFile, fileName)
+//                    }
+//                }
+//            }
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
+
+    productFlavors {
+    }
+
+    buildToolsVersion '26.0.2'
+}
+configurations {
+    all*.exclude group: 'android.support.v4', module: 'support-v4'
+    all*.exclude group: 'android.support.v7', module: 'support-v7'
+}
+dependencies {
+
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+
+    def system_dependencies = rootProject.ext.system_dependencies
+    compile system_dependencies.support_v4
+    compile system_dependencies.appcompat_v7
+    compile system_dependencies.cardview_v7
+    compile system_dependencies.palette_v7
+    compile system_dependencies.recyclerview_v7
+    compile system_dependencies.design
+
+    def romens_android_dependencies = rootProject.ext.romens_android_dependencies
+    //compile project(':romens.android')
+    compile romens_android_dependencies.romens_android_aar
+    compile romens_android_dependencies.okhttp3
+    compile romens_android_dependencies.okio
+    compile romens_android_dependencies.kryo
+    compile romens_android_dependencies.jackson
+    compile romens_android_dependencies.rxandroid
+    compile romens_android_dependencies.rxjava
+    compile romens_android_dependencies.rxbinding
+    compile romens_android_dependencies.rxandroid2
+    compile romens_android_dependencies.rxjava2
+    compile romens_android_dependencies.rxbinding2
+    compile romens_android_dependencies.glide
+    compile romens_android_dependencies.gson
+    compile romens_android_dependencies.guava
+
+    compile romens_android_dependencies.greendao
+    compile romens_android_dependencies.greenrobot_common
+
+    //compile romens_android_dependencies.observablescrollview
+    compile romens_android_dependencies.nineoldandroids
+
+    def other_dependencies = rootProject.ext.other_dependencies
+    //compile other_dependencies.romens_rcp
+    compile other_dependencies.romens_erp_core
+
+    compile other_dependencies.romens_extend
+    compile other_dependencies.romens_open
+    compile other_dependencies.romens_scanner
+    compile other_dependencies.romens_push
+    //compile project(':library')
+    compile other_dependencies.multitype
+}
