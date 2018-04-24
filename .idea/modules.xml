@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SelfHelpPayment.iml" filepath="$PROJECT_DIR$/SelfHelpPayment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SelfHelpPayment.iml" filepath="$PROJECT_DIR$/.idea/SelfHelpPayment.iml" />
+      <module fileurl="file://D:\Android\Projects\SelfHelpPayment\SelfHelpPayment.iml" filepath="D:\Android\Projects\SelfHelpPayment\SelfHelpPayment.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
