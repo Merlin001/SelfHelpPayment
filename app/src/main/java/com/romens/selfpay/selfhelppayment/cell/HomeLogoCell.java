@@ -23,21 +23,21 @@ import com.romens.selfpay.selfhelppayment.R;
  * @description
  */
 
-public class LogoCell extends LinearLayout {
+public class HomeLogoCell extends LinearLayout {
     private ImageView  logo;
     private TextView market;
     private TextView leader;
-    public LogoCell(Context context) {
+    public HomeLogoCell(Context context) {
         super(context);
         initView(context);
     }
 
-    public LogoCell(Context context, @Nullable AttributeSet attrs) {
+    public HomeLogoCell(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         initView(context);
     }
 
-    public LogoCell(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public HomeLogoCell(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView(context);
     }
@@ -76,12 +76,12 @@ public class LogoCell extends LinearLayout {
 //        andView.setImageResource(R.drawable.ic_launcher);
 //        andView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         andView.setBackgroundColor(Color.BLUE);
-        addView(andView,LayoutHelper.createLinear(40,LayoutHelper.MATCH_PARENT));
+        addView(andView,LayoutHelper.createLinear(40,LayoutHelper.MATCH_PARENT,8,0,0,0));
         ImageView payImage=new ImageView(context);
 //        payImage.setImageResource(R.drawable.ic_launcher);
 //        payImage.setScaleType(ImageView.ScaleType.FIT_CENTER);
         payImage.setBackgroundColor(Color.RED);
-        addView(payImage,LayoutHelper.createLinear(72,LayoutHelper.MATCH_PARENT));
+        addView(payImage,LayoutHelper.createLinear(72,LayoutHelper.MATCH_PARENT,8,0,0,0));
     }
 
     @Override

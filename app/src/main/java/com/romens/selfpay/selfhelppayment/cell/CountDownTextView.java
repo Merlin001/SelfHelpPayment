@@ -23,19 +23,20 @@ import com.romens.android.ui.Components.LayoutHelper;
  * @description
  */
 
-public class TextPaintView extends FrameLayout {
+public class CountDownTextView extends FrameLayout {
     private TextView textView;
-    public TextPaintView(Context context) {
+
+    public CountDownTextView(Context context) {
         super(context);
         initView(context);
     }
 
-    public TextPaintView(Context context, @Nullable AttributeSet attrs) {
+    public CountDownTextView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         initView(context);
     }
 
-    public TextPaintView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CountDownTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView(context);
     }
@@ -47,6 +48,7 @@ public class TextPaintView extends FrameLayout {
         textView.setSingleLine();
         textView.setGravity(Gravity.CENTER);
         addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT,LayoutHelper.WRAP_CONTENT,Gravity.CENTER));
+        setWillNotDraw(false);
     }
 
     @Override
@@ -55,13 +57,10 @@ public class TextPaintView extends FrameLayout {
         Paint paint=new Paint();
         paint.setColor(0xffaaaaaa);
         paint.setStrokeWidth(2);
-//        paint.setTextSize(AndroidUtilities.dp(12));
-//        paint.setStyle(Paint.Style.FILL);
-        //该方法即为设置基线上那个点究竟是left,center,还是right  这里我设置为center
-        paint.setTextAlign(Paint.Align.CENTER);
-        canvas.drawLine(getWidth()/6,getHeight()/2,getWidth()/3-AndroidUtilities.dp(16),getHeight()/2,paint);
+        int height=getHeight()/2;
+        canvas.drawLine(getWidth()/6,height,getWidth()/3-AndroidUtilities.dp(16),height,paint);
 //        canvas.drawText(text,getWidth()/2,getHeight()/3 *2,paint);
-        canvas.drawLine((getWidth()/3) *2+AndroidUtilities.dp(16),getHeight()/2,(getWidth()/6)*5,getHeight()/2,paint);
+        canvas.drawLine((getWidth()/3) *2+AndroidUtilities.dp(16),height,(getWidth()/6)*5,height,paint);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.romens.selfpay.selfhelppayment.cell;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -40,15 +41,16 @@ public class AlipayLogoCell extends LinearLayout {
 
     private void initView(Context context){
         setOrientation(HORIZONTAL);
+        setGravity(Gravity.CENTER_VERTICAL);
         setBackgroundResource(R.drawable.btn_border);
         ImageView logoView=new ImageView(context);
-        logoView.setImageResource(R.drawable.ic_launcher);
-        logoView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        addView(logoView, LayoutHelper.createLinear(96,96));
+//        logoView.setImageResource(R.drawable.ic_launcher);
+//        logoView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        logoView.setBackgroundColor(0xffaaaaaa);
+        addView(logoView, LayoutHelper.createLinear(112,96));
         LinearLayout linearLayout=new LinearLayout(context);
         linearLayout.setOrientation(VERTICAL);
-        linearLayout.setGravity(Gravity.CENTER_VERTICAL);
-        addView(linearLayout,LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT,LayoutHelper.MATCH_PARENT,16,0,0,0));
+        addView(linearLayout,LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT,LayoutHelper.WRAP_CONTENT,8,0,0,0));
         TextView topView=new TextView(context);
         topView.setTextColor(0xff757575);
         topView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,20);
@@ -61,7 +63,7 @@ public class AlipayLogoCell extends LinearLayout {
         bottomView.setSingleLine();
         bottomView.setMaxLines(1);
         bottomView.setText("本店支持花呗");
-        linearLayout.addView(bottomView,LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT,LayoutHelper.WRAP_CONTENT,0,16,0,0));
+        linearLayout.addView(bottomView,LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT,LayoutHelper.WRAP_CONTENT,0,8,0,0));
     }
 
     @Override
