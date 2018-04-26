@@ -174,7 +174,7 @@ ext {
 //    ]
     romens_android_dependencies = [
             //romens android
-            romens_android_aar  : 'romens:com.romens.android:3.9.13@aar',
+            romens_android_aar  : 'romens:com.romens.android:3.9.22@aar',
 //            romens_android_aar  : project(':romens.android'),
             //okhttp3             : 'com.squareup.okhttp3:okhttp:3.4.2',
             //okio                : 'com.squareup.okio:okio:1.11.0',
