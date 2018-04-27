@@ -13,6 +13,7 @@ import com.romens.android.rx.rxbinding.RxViewAction;
 import com.romens.android.ui.Components.LayoutHelper;
 import com.romens.selfpay.selfhelppayment.R;
 import com.romens.selfpay.selfhelppayment.cell.ActionCell;
+import com.romens.selfpay.selfhelppayment.cell.GoodsListCell;
 import com.romens.selfpay.selfhelppayment.cell.PayResultCell;
 
 import rx.functions.Action1;
@@ -34,6 +35,9 @@ public class AlipayFailPayActivity extends AppCompatActivity {
         payResultCell.setValue("支付失败");
         payResultCell.setStateImge(R.drawable.ic_error_black_36dp);
         content.addView(payResultCell, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT,LayoutHelper.WRAP_CONTENT,Gravity.TOP, 20,36,20,20));
+//        GoodsListCell cell=new GoodsListCell(this);
+//        cell.setCount(1);
+//        content.addView(cell,LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT,LayoutHelper.WRAP_CONTENT));
 
         TextView hintView=new TextView(this);
         hintView.setTextColor(0xff212121);

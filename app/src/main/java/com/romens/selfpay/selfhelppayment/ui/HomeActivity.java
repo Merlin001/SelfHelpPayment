@@ -118,9 +118,8 @@ public class HomeActivity extends AppCompatActivity {
         Animation animation = new TranslateAnimation(0, 0,
                 view.getHeight()- AndroidUtilities.dp(16), view.getHeight()+ AndroidUtilities.dp(16));
         animation.setDuration(400);
-        animation.setRepeatCount(500000);//动画的重复次数
-//        animation.setFillAfter(true);//设置为true，动画转化结束后被应用
-        view.startAnimation(animation);//开始动画
+        animation.setRepeatCount(500000);
+        view.startAnimation(animation);
 //        animation.setAnimationListener(new Animation.AnimationListener() {
 //            @Override
 //            public void onAnimationStart(Animation animation) {

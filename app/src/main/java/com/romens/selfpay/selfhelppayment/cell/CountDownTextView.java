@@ -59,7 +59,6 @@ public class CountDownTextView extends FrameLayout {
         paint.setStrokeWidth(2);
         int height=getHeight()/2;
         canvas.drawLine(getWidth()/6,height,getWidth()/3-AndroidUtilities.dp(16),height,paint);
-//        canvas.drawText(text,getWidth()/2,getHeight()/3 *2,paint);
         canvas.drawLine((getWidth()/3) *2+AndroidUtilities.dp(16),height,(getWidth()/6)*5,height,paint);
     }
 
