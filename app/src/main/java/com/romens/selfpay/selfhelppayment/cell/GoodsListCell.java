@@ -33,6 +33,7 @@ public class GoodsListCell extends LinearLayout {
     private TextView nameView;
     private TextView realPriceView;
     private TextView primePriceView;
+    private LinearLayout primeLayout;
 
     private TextView disView;
     private TextView countView;
@@ -64,7 +65,6 @@ public class GoodsListCell extends LinearLayout {
         setPadding(AndroidUtilities.dp(8),AndroidUtilities.dp(8),AndroidUtilities.dp(8),AndroidUtilities.dp(8));
         setOrientation(HORIZONTAL);
         imageView=new ImageView(context);
-        imageView.setImageResource(R.drawable.ic_launcher);
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         imageView.setBackgroundColor(0xfff0f0f0);
         addView(imageView, LayoutHelper.createLinear(96,96,8,0,0,0));
@@ -76,7 +76,6 @@ public class GoodsListCell extends LinearLayout {
         topLayout.setGravity(Gravity.CENTER_VERTICAL);
         linearLayout.addView(topLayout,LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT,0,1.0f));
         nameView=new TextView(context);
-        nameView.setText("爱他美婴儿奶粉800克");
         nameView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,16);
         nameView.setTextColor(0xff757575);
         nameView.setMaxLines(2);
@@ -94,11 +93,10 @@ public class GoodsListCell extends LinearLayout {
         realPriceView=new TextView(context);
         realPriceView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,14);
         realPriceView.setTextColor(0xffff9800);
-        realPriceView.setText("¥1500");
         realPriceView.setSingleLine();
         bottomLayout.addView(realPriceView,LayoutHelper.createLinear(0,LayoutHelper.WRAP_CONTENT,1.0f));
 
-        LinearLayout primeLayout=new LinearLayout(context);
+        primeLayout=new LinearLayout(context);
         primeLayout.setOrientation(HORIZONTAL);
         bottomLayout.addView(primeLayout,LayoutHelper.createLinear(0,LayoutHelper.WRAP_CONTENT,2.0f));
         TextView textView=new TextView(context);
@@ -109,7 +107,6 @@ public class GoodsListCell extends LinearLayout {
         primePriceView=new TextView(context);
         primePriceView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,14);
         primePriceView.setTextColor(0xffaaaaaa);
-        primePriceView.setText("¥1699");
         primePriceView.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG);
         primePriceView.setSingleLine();
         primeLayout.addView(primePriceView,LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT,LayoutHelper.WRAP_CONTENT));
@@ -182,6 +179,7 @@ public class GoodsListCell extends LinearLayout {
         }
     }
 
+
     public void setCount(int count){
         countView.setText(count+"");
         this.count=count;
@@ -189,6 +187,16 @@ public class GoodsListCell extends LinearLayout {
             setDisViewStyle(true);
         }else {
             setDisViewStyle(false);
+        }
+    }
+
+    public void setValue(String caption,int goodsImage, String price, String primePrice){
+        nameView.setText(caption);
+        imageView.setImageResource(goodsImage);
+        realPriceView.setText(price);
+        primeLayout.setVisibility(TextUtils.isEmpty(primePrice)?GONE:VISIBLE);
+        if (!TextUtils.isEmpty(primePrice)){
+            primePriceView.setText(primePrice);
         }
     }
 
