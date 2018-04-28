@@ -58,8 +58,8 @@ public class AlipayScanCodePayActivity extends AppCompatActivity{
         sumView.setGravity(Gravity.CENTER);
         container.addView(sumView,LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT,LayoutHelper.WRAP_CONTENT,0,36,0,0));
         timeView=new CountDownTextView(this);
-        String str="请在 120 秒内支付完成";
-        timeView.setValue(setTextStyle(str));
+//        String str="请在 120 秒内支付完成";
+//        timeView.setValue(setTextStyle(str));
         container.addView(timeView,LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT,LayoutHelper.WRAP_CONTENT,0,36,0,0));
 
         ImageView imageView=new ImageView(this);

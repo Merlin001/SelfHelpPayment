@@ -20,7 +20,7 @@ import com.romens.selfpay.selfhelppayment.R;
 import com.romens.selfpay.selfhelppayment.cell.ActionCell;
 import com.romens.selfpay.selfhelppayment.cell.AlipayActionBarCell;
 import com.romens.selfpay.selfhelppayment.cell.PayResultCell;
-import com.romens.selfpay.selfhelppayment.cell.TextHorizontalCell;
+import com.romens.selfpay.selfhelppayment.cell.CVTextCell;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -176,9 +176,9 @@ public class AlipaySucessPayActivity extends AppCompatActivity {
                 cell.setStateImge(R.drawable.done_circle);
             }else {
                 if (convertView == null) {
-                    convertView = new TextHorizontalCell(context);
+                    convertView = new CVTextCell(context);
                 }
-                TextHorizontalCell cell=(TextHorizontalCell)convertView;
+                CVTextCell cell=(CVTextCell)convertView;
                 if (position==orderSumRow){
                     cell.setValueColor(0xffaaaaaa);
                 }else {

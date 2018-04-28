@@ -19,20 +19,20 @@ import com.romens.android.ui.Components.LayoutHelper;
  * @description
  */
 
-public class TextHorizontalCell extends LinearLayout {
+public class CVTextCell extends LinearLayout {
     private TextView titleView;
     private TextView contentView;
-    public TextHorizontalCell(Context context) {
+    public CVTextCell(Context context) {
         super(context);
         initView(context);
     }
 
-    public TextHorizontalCell(Context context, @Nullable AttributeSet attrs) {
+    public CVTextCell(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         initView(context);
     }
 
-    public TextHorizontalCell(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CVTextCell(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView(context);
     }
