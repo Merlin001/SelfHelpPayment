@@ -1,5 +1,6 @@
 package com.romens.selfpay.selfhelppayment.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +14,7 @@ import com.romens.android.ui.Components.LayoutHelper;
 import com.romens.selfpay.selfhelppayment.R;
 import com.romens.selfpay.selfhelppayment.cell.ActionCell;
 import com.romens.selfpay.selfhelppayment.cell.PayResultCell;
-import com.romens.selfpay.selfhelppayment.cell.SelectBagCell;
+import com.romens.selfpay.selfhelppayment.ui.test.TestActivity;
 
 import rx.functions.Action1;
 
@@ -34,13 +35,6 @@ public class AlipayFailPayActivity extends AppCompatActivity {
         payResultCell.setValue("支付失败");
         payResultCell.setStateImge(R.drawable.ic_error_black_36dp);
         content.addView(payResultCell, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT,LayoutHelper.WRAP_CONTENT,Gravity.TOP, 20,36,20,20));
-//        GoodsListCell cell=new GoodsListCell(this);
-//        cell.setCount(1);
-//        cell.setValue("爱他美婴儿奶粉800克",R.drawable.ic_launcher,"¥1500",null);
-//        content.addView(cell,LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT,LayoutHelper.WRAP_CONTENT));
-//        SelectBagCell cell=new SelectBagCell(this);
-//        content.addView(cell,LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT,LayoutHelper.WRAP_CONTENT));
-
 
         TextView hintView=new TextView(this);
         hintView.setTextColor(0xff212121);
@@ -68,7 +62,7 @@ public class AlipayFailPayActivity extends AppCompatActivity {
         RxViewAction.clickNoDouble(cancelCell).subscribe(new Action1() {
             @Override
             public void call(Object o) {
-                finish();
+                startActivity(new Intent(AlipayFailPayActivity.this, TestActivity.class));
             }
         });
     }

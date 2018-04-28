@@ -33,6 +33,10 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"></activity>
         <activity
+            android:name="com.romens.selfpay.selfhelppayment.ui.test.TestActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
+        <activity
             android:name="com.romens.selfpay.selfhelppayment.ui.PayTypeChooseActivity"
             android:theme="@style/transparent_activity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
