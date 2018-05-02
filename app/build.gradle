@@ -127,6 +127,7 @@ dependencies {
     compile romens_android_dependencies.gson
     compile romens_android_dependencies.guava
 
+
     compile romens_android_dependencies.greendao
     compile romens_android_dependencies.greenrobot_common
 
@@ -143,4 +144,9 @@ dependencies {
     compile other_dependencies.romens_push
     //compile project(':library')
     compile other_dependencies.multitype
+
+    compile other_dependencies.romens_images
+    compile other_dependencies.fresco
+
+
 }

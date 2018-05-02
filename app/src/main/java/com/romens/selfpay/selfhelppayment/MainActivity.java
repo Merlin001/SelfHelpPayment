@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.romens.selfpay.selfhelppayment.ui.DeleteOrCancleOrderActivity;
 import com.romens.selfpay.selfhelppayment.ui.PayTypeChooseActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.text)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, PayTypeChooseActivity.class);
+                Intent intent = new Intent(MainActivity.this, DeleteOrCancleOrderActivity.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
 
