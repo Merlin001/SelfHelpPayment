@@ -2,6 +2,10 @@ package com.romens.selfpay.selfhelppayment.ui;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -34,10 +38,12 @@ import rx.functions.Action1;
  * @description
  */
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements SensorEventListener {
 
     private TextView emptyView;
     private TrigonView trigonView;
+    private SensorManager mManager;//传感器管理对象
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -93,8 +99,8 @@ public class HomeActivity extends AppCompatActivity {
         RxViewAction.clickNoDouble(bottomLayout).subscribe(new Action1() {
             @Override
             public void call(Object o) {
-                emptyView.setVisibility(View.VISIBLE);
-                animation(trigonView);
+//                emptyView.setVisibility(View.VISIBLE);
+//                animation(trigonView);
             }
         });
 
@@ -104,6 +110,8 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(HomeActivity.this,AlipayFailPayActivity.class));
             }
         });
+
+        mManager = (SensorManager)getSystemService(this.SENSOR_SERVICE);
     }
 
     private CharSequence setTextStyle(String str){
@@ -118,31 +126,30 @@ public class HomeActivity extends AppCompatActivity {
         Animation animation = new TranslateAnimation(0, 0,
                 view.getHeight()- AndroidUtilities.dp(16), view.getHeight()+ AndroidUtilities.dp(16));
         animation.setDuration(400);
-        animation.setRepeatCount(500000);
+        animation.setRepeatCount(300);
         view.startAnimation(animation);
-//        animation.setAnimationListener(new Animation.AnimationListener() {
-//            @Override
-//            public void onAnimationStart(Animation animation) {
-//
-//            }
-//
-//            @Override
-//            public void onAnimationEnd(Animation animation) {
-//                animation.reset();
-//                animation.setAnimationListener(this);
-//                animation.start();
-//            }
-//
-//            @Override
-//            public void onAnimationRepeat(Animation animation) {
-//
-//            }
-//        });
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                emptyView.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        mManager.registerListener(this, mManager.getDefaultSensor(Sensor.TYPE_PROXIMITY),
+                SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override
@@ -155,5 +162,28 @@ public class HomeActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         trigonView.clearAnimation();
+        if(mManager != null){
+            mManager.unregisterListener(this);//注销传感器监听
+        }
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        float[] its = event.values;
+        if (its != null && event.sensor.getType() == Sensor.TYPE_PROXIMITY) {
+            //当手贴近距离感应器的时候its[0]返回值为0.0，当手离开时返回1.0
+            if (its[0] == 0.0) {// 贴近手机
+                emptyView.setVisibility(View.VISIBLE);
+                animation(trigonView);
+            } else {// 远离手机
+//                emptyView.setVisibility(View.GONE);
+//                trigonView.clearAnimation();
+            }
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
     }
 }
