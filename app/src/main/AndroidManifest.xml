@@ -46,6 +46,11 @@
             android:theme="@style/transparent_activity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.romens.selfpay.selfhelppayment.ui.ManualInputCodeActivity"
+            android:theme="@style/transparent_activity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

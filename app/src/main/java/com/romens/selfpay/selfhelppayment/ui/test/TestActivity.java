@@ -1,15 +1,21 @@
 package com.romens.selfpay.selfhelppayment.ui.test;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.romens.android.rx.rxbinding.RxViewAction;
 import com.romens.android.ui.Components.LayoutHelper;
 import com.romens.selfpay.selfhelppayment.R;
 import com.romens.selfpay.selfhelppayment.cell.GoodsListCell;
 import com.romens.selfpay.selfhelppayment.cell.SelectBagCell;
+import com.romens.selfpay.selfhelppayment.ui.ManualInputCodeActivity;
+import com.romens.selfpay.selfhelppayment.ui.fragment.ManualInputCodeFragment;
+
+import rx.functions.Action1;
 
 /**
  * @author lm
@@ -31,6 +37,14 @@ public class TestActivity extends AppCompatActivity {
         content.addView(cell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT,LayoutHelper.WRAP_CONTENT));
         SelectBagCell bagcell=new SelectBagCell(this);
         content.addView(bagcell,LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT,LayoutHelper.WRAP_CONTENT));
+        RxViewAction.click(content).subscribe(new Action1() {
+            @Override
+            public void call(Object o) {
+                startActivity(new Intent(TestActivity.this, ManualInputCodeActivity.class));
+            }
+        });
 
+//        ManualInputCodeFragment fragment=new ManualInputCodeFragment();
+//        getSupportFragmentManager().beginTransaction().replace()
     }
 }
