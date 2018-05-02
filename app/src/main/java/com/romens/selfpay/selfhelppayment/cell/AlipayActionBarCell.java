@@ -60,6 +60,7 @@ public class AlipayActionBarCell extends LinearLayout {
             paint.setColor(0xffd9d9d9);
             paint.setStrokeWidth(8);
         }
+        setBackgroundColor(getResources().getColor(R.color.white));
         FrameLayout logoLayout=new FrameLayout(context);
         addView(logoLayout, LayoutHelper.createLinear(0,LayoutHelper.MATCH_PARENT,1.0f,8,8,8,8));
         logo=new ImageView(context);
