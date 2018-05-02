@@ -20,33 +20,31 @@ import com.romens.android.ui.Components.LayoutHelper;
 import com.romens.android.utils.TextSpannableStringUtils;
 import com.romens.selfpay.selfhelppayment.R;
 
-import rx.functions.Action1;
-
 /**
  * @author lm
  * @Created 2018/4/23
  * @description
  */
 
-public class PaySucessCell extends LinearLayout {
+public class PayResultCell extends LinearLayout {
     private ImageView imageView;
-    private TextView payState;
+    private TextView payStateView;
     private TextView userView;
     private TextView sumView;
     private TextView numView;
 
     private Paint paint;
-    public PaySucessCell(Context context) {
+    public PayResultCell(Context context) {
         super(context);
         initView(context);
     }
 
-    public PaySucessCell(Context context, @Nullable AttributeSet attrs) {
+    public PayResultCell(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         initView(context);
     }
 
-    public PaySucessCell(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public PayResultCell(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView(context);
     }
@@ -62,21 +60,20 @@ public class PaySucessCell extends LinearLayout {
         addView(frameLayout, LayoutHelper.createLinear(0,LayoutHelper.MATCH_PARENT,1.0f,0,0,8,0));
         imageView=new ImageView(context);
         imageView.setImageResource(R.drawable.done_circle);
-        imageView.setColorFilter(0xff0288d1);
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         frameLayout.addView(imageView,LayoutHelper.createFrame(32,32, Gravity.CENTER_VERTICAL));
         LinearLayout linearLayout=new LinearLayout(context);
         linearLayout.setOrientation(VERTICAL);
         linearLayout.setGravity(Gravity.LEFT|Gravity.CENTER_VERTICAL);
         frameLayout.addView(linearLayout,LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT,LayoutHelper.MATCH_PARENT,Gravity.CENTER_VERTICAL,36,0,0,0));
-        payState=new TextView(context);
-        payState.setSingleLine();
-        payState.setTextColor(0xff757575);
-        payState.setText("支付宝付款成功");
-        payState.setTextSize(TypedValue.COMPLEX_UNIT_DIP,20);
-        payState.setEllipsize(TextUtils.TruncateAt.END);
-        payState.setGravity(Gravity.CENTER);
-        linearLayout.addView(payState,LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT,LayoutHelper.WRAP_CONTENT));
+        payStateView =new TextView(context);
+        payStateView.setSingleLine();
+        payStateView.setTextColor(0xff757575);
+        payStateView.setText("支付宝付款成功");
+        payStateView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,20);
+        payStateView.setEllipsize(TextUtils.TruncateAt.END);
+        payStateView.setGravity(Gravity.CENTER);
+        linearLayout.addView(payStateView,LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT,LayoutHelper.WRAP_CONTENT));
         userView=new TextView(context);
         userView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,12);
         userView.setTextColor(0xffbbbbbb);
@@ -109,6 +106,14 @@ public class PaySucessCell extends LinearLayout {
         sumLayout.addView(numView,LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT,LayoutHelper.WRAP_CONTENT));
 
         setWillNotDraw(false);
+    }
+
+    public void setValue(String payState){
+        payStateView.setText(payState);
+    }
+
+    public void setStateImge(int resId){
+        imageView.setImageResource(resId);
     }
 
     @Override

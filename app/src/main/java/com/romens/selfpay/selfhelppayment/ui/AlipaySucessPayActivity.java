@@ -17,9 +17,10 @@ import android.widget.TextView;
 
 import com.romens.android.ui.Components.LayoutHelper;
 import com.romens.selfpay.selfhelppayment.R;
+import com.romens.selfpay.selfhelppayment.cell.ActionCell;
 import com.romens.selfpay.selfhelppayment.cell.AlipayActionBarCell;
-import com.romens.selfpay.selfhelppayment.cell.PaySucessCell;
-import com.romens.selfpay.selfhelppayment.cell.TextHorizontalCell;
+import com.romens.selfpay.selfhelppayment.cell.PayResultCell;
+import com.romens.selfpay.selfhelppayment.cell.CVTextCell;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ import java.util.List;
 
 public class AlipaySucessPayActivity extends AppCompatActivity {
     private TextView hintView;
-    private TextView closeBtn;
+    private ActionCell closeBtn;
     private ListView listView;
     private MyAdapter mAdapter;
 
@@ -60,15 +61,10 @@ public class AlipaySucessPayActivity extends AppCompatActivity {
         hintView.setGravity(Gravity.CENTER);
         container.addView(hintView,LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT,LayoutHelper.WRAP_CONTENT,0,56,0,0));
 
-        closeBtn=new TextView(this);
-        closeBtn.setTextColor(0xffffffff);
-        closeBtn.setTextSize(TypedValue.COMPLEX_UNIT_DIP,18);
-        closeBtn.setText("关闭（30s）");
-        closeBtn.setMaxLines(1);
-        closeBtn.setSingleLine();
-        closeBtn.setGravity(Gravity.CENTER);
-        closeBtn.setBackgroundResource(R.color.md_blue_400);
-        container.addView(closeBtn,LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT,42,56,40,56,0));
+        closeBtn=new ActionCell(this);
+        closeBtn.setPrimaryAction();
+        closeBtn.setValue("关闭（30s）");
+        container.addView(closeBtn,LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT,LayoutHelper.WRAP_CONTENT,56,40,56,0));
 
         mAdapter=new MyAdapter(this);
         listView.setAdapter(mAdapter);
@@ -107,7 +103,7 @@ public class AlipaySucessPayActivity extends AppCompatActivity {
     private CountDownTimer timer = new CountDownTimer(30*1000, 1000) {
         @Override
         public void onTick(long millisUntilFinished) {
-            closeBtn.setText("关闭（"+millisUntilFinished/1000+"s）");
+            closeBtn.setValue("关闭（"+millisUntilFinished/1000+"s）");
             if (millisUntilFinished/1000==25){
                 hintView.setText("宣传一下");
             }
@@ -174,14 +170,15 @@ public class AlipaySucessPayActivity extends AppCompatActivity {
             int type=getItemViewType(position);
             if (type==0) {
                 if (convertView == null) {
-                    convertView = new PaySucessCell(context);
+                    convertView = new PayResultCell(context);
                 }
-                PaySucessCell cell = (PaySucessCell) convertView;
+                PayResultCell cell = (PayResultCell) convertView;
+                cell.setStateImge(R.drawable.done_circle);
             }else {
                 if (convertView == null) {
-                    convertView = new TextHorizontalCell(context);
+                    convertView = new CVTextCell(context);
                 }
-                TextHorizontalCell cell=(TextHorizontalCell)convertView;
+                CVTextCell cell=(CVTextCell)convertView;
                 if (position==orderSumRow){
                     cell.setValueColor(0xffaaaaaa);
                 }else {

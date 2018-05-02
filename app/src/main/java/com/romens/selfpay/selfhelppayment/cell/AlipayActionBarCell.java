@@ -88,7 +88,7 @@ public class AlipayActionBarCell extends LinearLayout {
 
         cancelBtn=new LinearLayout(context);
         cancelBtn.setOrientation(HORIZONTAL);
-        cancelBtn.setBackgroundResource(R.drawable.btn_normal_border);
+        cancelBtn.setBackgroundResource(R.drawable.btn_border_grey);
         cancelBtn.setGravity(Gravity.CENTER);
         addView(cancelBtn,LayoutHelper.createLinear(96,36,Gravity.CENTER_VERTICAL,8,8,8,8));
 
@@ -106,7 +106,7 @@ public class AlipayActionBarCell extends LinearLayout {
             @Override
             public void call(Object o) {
                 isCancle=!isCancle;
-                tagView.setBackgroundResource(isCancle?R.drawable.cancle_btn_orange_circle:R.drawable.cancle_btn_grey_circle);
+                tagView.setBackgroundResource(isCancle?R.drawable.cancle_btn_blue_circle :R.drawable.cancle_btn_grey_circle);
             }
         });
 
