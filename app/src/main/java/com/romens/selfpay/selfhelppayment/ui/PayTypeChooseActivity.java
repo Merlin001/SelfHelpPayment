@@ -33,13 +33,6 @@ public class PayTypeChooseActivity extends TransparentBaseActivity{
     }
 
 
-
-
-
-
-
-
-
     @Override
     public void initView(Context context) {
             FrameLayout frameLayout = new FrameLayout(context);
