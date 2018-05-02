@@ -236,6 +236,8 @@ public class NumberKeyboardView extends View {
                         if (number != null) {
                             if (number.equals("delete")) {
                                 onNumberClickListener.onNumberDelete();
+                            } else if (number.equals("confirm")){
+                                onNumberClickListener.onConfirm();
                             } else {
                                 onNumberClickListener.onNumberReturn(number);
                             }
@@ -363,11 +365,21 @@ public class NumberKeyboardView extends View {
             invalidate();
         }
 
-        public interface OnNumberClickListener {
+    public void setMargin(float margin) {
+        this.margin = margin;
+    }
+
+    public void setTextSize(float textSize) {
+        this.textSize = textSize;
+    }
+
+    public interface OnNumberClickListener {
             //回调点击的数字
             public void onNumberReturn(String number);
 
             //删除键的回调
             public void onNumberDelete();
+
+            void onConfirm();
         }
     }
