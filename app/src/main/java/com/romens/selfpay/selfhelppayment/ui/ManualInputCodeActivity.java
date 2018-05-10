@@ -39,10 +39,9 @@ public class ManualInputCodeActivity extends TransparentBaseActivity {
         topLayout.setBackgroundColor(0xffffffff);
         content.addView(topLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT,156));
         ImageView imageView=new ImageView(context);
-//        imageView.setImageResource();
-//        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        imageView.setBackgroundColor(0xfff0f0f0);
-        topLayout.addView(imageView,LayoutHelper.createFrame(140,140,Gravity.LEFT,8,8,8,8));
+        imageView.setImageResource(R.drawable.ic_code);
+        imageView.setScaleType(ImageView.ScaleType.CENTER);
+        topLayout.addView(imageView,LayoutHelper.createFrame(132,132,Gravity.LEFT,8,8,8,8));
 
         ImageView closeView=new ImageView(context);
         closeView.setImageResource(R.drawable.ic_close_grey600_24dp);
@@ -54,7 +53,7 @@ public class ManualInputCodeActivity extends TransparentBaseActivity {
         textView.setTextColor(0xff757575);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,16);
         textView.setMaxLines(2);
-        topLayout.addView(textView,LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT,LayoutHelper.WRAP_CONTENT,Gravity.LEFT|Gravity.CENTER,156,0,8,0));
+        topLayout.addView(textView,LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT,LayoutHelper.WRAP_CONTENT,Gravity.LEFT|Gravity.CENTER,140,0,8,0));
 
         LinearLayout bottomLayout=new LinearLayout(context);
         bottomLayout.setOrientation(LinearLayout.VERTICAL);

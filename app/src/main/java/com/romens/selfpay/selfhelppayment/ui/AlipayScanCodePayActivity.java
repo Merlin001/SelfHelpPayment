@@ -63,8 +63,8 @@ public class AlipayScanCodePayActivity extends AppCompatActivity{
         container.addView(timeView,LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT,LayoutHelper.WRAP_CONTENT,0,36,0,0));
 
         ImageView imageView=new ImageView(this);
-        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        imageView.setImageResource(R.drawable.ic_launcher);
+        imageView.setScaleType(ImageView.ScaleType.CENTER);
+        imageView.setImageResource(R.drawable.ic_code_pay);
         container.addView(imageView,LayoutHelper.createLinear(156,156,0,36,0,0));
 
         RxViewAction.clickNoDouble(imageView).subscribe(new Action1() {

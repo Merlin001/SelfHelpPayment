@@ -42,7 +42,7 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
 
     private TextView emptyView;
     private TrigonView trigonView;
-    private SensorManager mManager;//传感器管理对象
+    private SensorManager mManager;
 
 
     @Override
@@ -83,9 +83,9 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
         bottomLayout.addView(hintView,LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT,LayoutHelper.WRAP_CONTENT,0,8,0,0));
 
         ImageView scanCodeImage=new ImageView(this);
-        scanCodeImage.setImageResource(R.drawable.ic_launcher);
-        scanCodeImage.setBackgroundColor(0xffaaaaaa);
-        bottomLayout.addView(scanCodeImage,LayoutHelper.createLinear(164,120,Gravity.CENTER_HORIZONTAL, 0,20,0,20));
+        scanCodeImage.setImageResource(R.drawable.ic_scan_code);
+        scanCodeImage.setScaleType(ImageView.ScaleType.CENTER);
+        bottomLayout.addView(scanCodeImage,LayoutHelper.createLinear(164,150,Gravity.CENTER_HORIZONTAL, 0,16,0,8));
         trigonView=new TrigonView(this);
         bottomLayout.addView(trigonView,LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT,LayoutHelper.WRAP_CONTENT));
 

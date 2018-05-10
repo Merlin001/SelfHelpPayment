@@ -49,6 +49,7 @@ public class AlipaySucessPayActivity extends AppCompatActivity {
         setContentView(container);
         listView=new ListView(this);
         listView.setDivider(null);
+        listView.setBackground(null);
         listView.setDividerHeight(0);
         container.addView(listView,LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT,LayoutHelper.WRAP_CONTENT,24,32,24,0));
 
