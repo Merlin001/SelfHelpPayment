@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
@@ -24,6 +25,7 @@ import com.romens.android.rx.rxbinding.RxViewAction;
 import com.romens.android.ui.Components.LayoutHelper;
 import com.romens.selfpay.selfhelppayment.R;
 import com.romens.selfpay.selfhelppayment.cell.GoodsListCell;
+import com.romens.selfpay.selfhelppayment.cell.GoodsMoveCell;
 import com.romens.selfpay.selfhelppayment.cell.SelectBagCell;
 import com.romens.selfpay.selfhelppayment.ui.ManualInputCodeActivity;
 import com.romens.selfpay.selfhelppayment.ui.fragment.ManualInputCodeFragment;
@@ -42,6 +44,7 @@ import static android.widget.LinearLayout.HORIZONTAL;
  */
 
 public class TestActivity extends AppCompatActivity {
+    private  GoodsMoveCell moveCell;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,51 +68,16 @@ public class TestActivity extends AppCompatActivity {
 //        getSupportFragmentManager().beginTransaction().replace()
 
         content.setBackgroundColor(0xfff0f0f0);
-        final LinearLayout linearLayout=new LinearLayout(this);
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        linearLayout.setBackgroundColor(0xffffffff);
-        linearLayout.setGravity(Gravity.CENTER);
-        content.addView(linearLayout,LayoutHelper.createLinear(260,280,Gravity.CENTER_HORIZONTAL, 0,16,0,16));
-        ImageView imageView=new ImageView(this);
-        imageView.setScaleType(ImageView.ScaleType.CENTER);
-        imageView.setImageResource(R.drawable.ic_launcher);
-        linearLayout.addView(imageView,LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT,0,0.6f));
-
-        TextView nameView=new TextView(this);
-        nameView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,14);
-        nameView.setText("SK-11 R.N.A.超肌能紧致弹力精粹75ml");
-        nameView.setTextColor(0xff212121);
-        linearLayout.addView(nameView,LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT,LayoutHelper.WRAP_CONTENT,0,16,0,16));
-
-        TextView priceView=new TextView(this);
-        priceView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,18);
-        priceView.setText("￥1098");
-        priceView.setTextColor(0xffff9800);
-        linearLayout.addView(priceView,LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT,LayoutHelper.WRAP_CONTENT,0,8,0,4));
-
-        LinearLayout primeLayout=new LinearLayout(this);
-        primeLayout.setOrientation(HORIZONTAL);
-        linearLayout.addView(primeLayout,LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT,LayoutHelper.WRAP_CONTENT,0,0,0,16));
-        TextView textView=new TextView(this);
-        textView.setText("原价: ");
-        textView.setTextColor(0xffaaaaaa);
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,14);
-        primeLayout.addView(textView,LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT,LayoutHelper.WRAP_CONTENT));
-        TextView primePriceView=new TextView(this);
-        primePriceView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,14);
-        primePriceView.setTextColor(0xffaaaaaa);
-        primePriceView.setText("1299");
-        primePriceView.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG);
-        primePriceView.setSingleLine();
-        primeLayout.addView(primePriceView,LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT,LayoutHelper.WRAP_CONTENT,4,0,0,0));
-        TimerTask task = new TimerTask() {
+        moveCell=new GoodsMoveCell(this);
+        content.addView(moveCell,LayoutHelper.createLinear(240,LayoutHelper.WRAP_CONTENT,Gravity.CENTER_HORIZONTAL,0,16,0,16));
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                setAnimation(linearLayout);
+              setAnimation(moveCell);
             }
-        };
-        Timer timer = new Timer();
-        timer.schedule(task, 500);
+        }, 500);//3秒后执行Runnable中的run方法
+
     }
 
     private void setAnimation(View view){
