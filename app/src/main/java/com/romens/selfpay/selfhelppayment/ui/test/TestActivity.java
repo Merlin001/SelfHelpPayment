@@ -28,6 +28,9 @@ import com.romens.selfpay.selfhelppayment.cell.SelectBagCell;
 import com.romens.selfpay.selfhelppayment.ui.ManualInputCodeActivity;
 import com.romens.selfpay.selfhelppayment.ui.fragment.ManualInputCodeFragment;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import rx.functions.Action1;
 
 import static android.widget.LinearLayout.HORIZONTAL;
@@ -99,13 +102,14 @@ public class TestActivity extends AppCompatActivity {
         primePriceView.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG);
         primePriceView.setSingleLine();
         primeLayout.addView(primePriceView,LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT,LayoutHelper.WRAP_CONTENT,4,0,0,0));
-
-        RxViewAction.clickNoDouble(linearLayout).subscribe(new Action1() {
+        TimerTask task = new TimerTask() {
             @Override
-            public void call(Object o) {
+            public void run() {
                 setAnimation(linearLayout);
             }
-        });
+        };
+        Timer timer = new Timer();
+        timer.schedule(task, 500);
     }
 
     private void setAnimation(View view){
